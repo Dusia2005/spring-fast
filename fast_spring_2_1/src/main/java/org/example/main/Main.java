@@ -12,10 +12,11 @@ public class Main {
         Person Daria = context.getBean(Person.class);
         System.out.println(Daria);
 
-        String s = context.getBean(String.class);
-        System.out.println(s);
+        Person Marek = context.getBean( "Marek",Person.class);
+        System.out.println(Marek);
 
-        Integer n = context.getBean(Integer.class);
-        System.out.println(n);
+        Person Tolia = context.getBean( "Anatoli",Person.class);
+        System.out.println(Tolia);
+
     }
 }
