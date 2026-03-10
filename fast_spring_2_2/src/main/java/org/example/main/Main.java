@@ -12,10 +12,6 @@ public class Main {
 
         Person Daria = context.getBean(Person.class);
 
-        Daria.setName("Daria");
-        Daria.setSurname("Leshok");
-        Daria.setAge(21);
-
         System.out.println(Daria);
     }
 }

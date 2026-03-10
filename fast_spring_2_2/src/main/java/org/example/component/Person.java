@@ -1,5 +1,6 @@
 package org.example.component;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -7,6 +8,13 @@ public class Person {
     private String name;
     private String surname;
     private int age;
+
+    @PostConstruct
+    public void init() {
+        this.name = "Daria";
+        this.surname = "Leshok";
+        this.age = 21;
+    }
 
     public String getSurname() {
         return surname;
