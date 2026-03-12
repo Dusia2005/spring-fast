@@ -10,15 +10,19 @@ public class Person {
     private String name;
     private String surname;
     private int age;
-    @Autowired // даем Spring команду внедрить в это поле значение из context
-    private Pet pet;
 
+    private final Pet pet;
 
     @PostConstruct
     public void init() {
         this.name = "Daria";
         this.surname = "Leshok";
         this.age = 21;
+    }
+
+    @Autowired // Spring внедряет бин Pet из context при создании Person
+    public Person(Pet pet) {
+        this.pet = pet;
     }
 
     public String getSurname() {
