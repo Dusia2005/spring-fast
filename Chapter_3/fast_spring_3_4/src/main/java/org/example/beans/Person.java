@@ -1,11 +1,23 @@
 package org.example.beans;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Person {
 
     private String name;
     private String surname;
     private int age;
     private Pet pet;
+
+    public Person(@Qualifier("cat2") Pet pet) {
+        this.pet = pet;
+        this.name = "Daria";
+        this.surname = "Leshok";
+        this.age = 21;
+    }
 
     public String getSurname() {
         return surname;
@@ -51,5 +63,4 @@ public class Person {
                 ", age=" + age +
                 '}';
     }
-
 }

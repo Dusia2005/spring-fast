@@ -5,6 +5,9 @@ public class Pet {
     private String name;
     private String sound;
 
+    public Pet() {
+    }
+
     public String getName() {
         return name;
     }

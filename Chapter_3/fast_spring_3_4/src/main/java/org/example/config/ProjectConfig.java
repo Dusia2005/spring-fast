@@ -1,12 +1,12 @@
 package org.example.config;
 
-
-import org.example.beans.Person;
 import org.example.beans.Pet;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+@ComponentScan(basePackages = "org.example.beans")
 @Configuration
 public class ProjectConfig {
 
@@ -25,16 +25,4 @@ public class ProjectConfig {
         c.setSound("Meo-oww");
         return c;
     }
-
-    @Bean
-    public Person dasha(
-        @Qualifier("cat2") Pet cat) {
-
-            Person d = new Person();
-            d.setName("Daria");
-            d.setSurname("Leshok");
-            d.setAge(21);
-            d.setPet(cat);
-            return d;
-        }
 }
