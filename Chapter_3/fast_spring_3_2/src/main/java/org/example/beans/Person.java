@@ -11,18 +11,13 @@ public class Person {
     private String surname;
     private int age;
 
-    private final Pet pet;
+    private Pet pet;
 
     @PostConstruct
     public void init() {
         this.name = "Daria";
         this.surname = "Leshok";
         this.age = 21;
-    }
-
-    @Autowired // Spring внедряет бин Pet из context при создании Person
-    public Person(Pet pet) {
-        this.pet = pet;
     }
 
     public String getSurname() {
@@ -57,9 +52,10 @@ public class Person {
         return pet;
     }
 
+    @Autowired
     public void setPet(Pet pet) {
         this.pet = pet;
-    }
+    } // внедрение Pet через setter
 
     @Override
     public String toString() {
