@@ -1,9 +1,31 @@
 package org.example.config;
 
+import org.example.proxies.CommentNotificationProxy;
+import org.example.proxies.EmailNotificationsProxy;
+import org.example.repositories.CommentRepository;
+import org.example.repositories.DBCommentRepository;
+import org.example.services.CommentService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"org.example.proxies", "org.example.services", "org.example.repositories"})
 public class ProjectConfiguration {
+
+    @Bean
+    public CommentRepository commentRepository() {
+        return new DBCommentRepository();
+    }
+
+    @Bean
+    public CommentNotificationProxy commentNotificationProxy() {
+        return new EmailNotificationsProxy();
+    }
+
+    @Bean
+    public CommentService commentService(
+            CommentRepository commentRepository,
+            CommentNotificationProxy commentNotificationProxy) {
+        return new CommentService(commentRepository, commentNotificationProxy);
+    }
 }

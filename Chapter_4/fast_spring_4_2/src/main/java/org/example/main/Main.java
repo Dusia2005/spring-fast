@@ -19,6 +19,5 @@ public class Main {
 
         var commentService = context.getBean(CommentService.class);
         commentService.publishComment(comment);
-
     }
 }
